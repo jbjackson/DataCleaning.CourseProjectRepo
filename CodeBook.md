@@ -1,9 +1,9 @@
 #Code Book
 This code book has four sections
-1. Information Regarding Original Data Source
-2. The Data Overview
-3. The Script Used to Modify Source Data
-4. References
+- Information Regarding Original Data Source
+- The Data Overview
+- The Script Used to Modify Source Data
+- References
 
 ##Information Regarding Orignial Data Source
 
