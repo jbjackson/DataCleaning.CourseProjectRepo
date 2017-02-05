@@ -47,6 +47,7 @@ This dataset contains a reduced number of variables from the original set.  The 
   - fBodyAccJerkMag
   - fBodyGyroMag
   - fBodyGyroJerkMag
+
 (XYZ indicates 3 measurements for that variable)
 (t-prefix denotes time)
 (f-prefix denotes frequency)
@@ -70,7 +71,7 @@ This dataset contains a reduced number of variables from the original set.  The 
   - bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
   - angle(): Angle between to vectors.
 
-  - 5 additional calculated vectors
+- 5 additional calculated vectors
   - gravityMean
   - tBodyAccMean
   - tBodyAccJerkMean
@@ -89,7 +90,8 @@ Data for this script existed in seven different file locations.  Data was access
 
 The first step was to access the names of the measured variables
 
-'''R-script
+'''
+
         name.t1 <- read.table("*file location*")
         n1 <- name.t1[,2]       #pulling the names from the table
         n2 <- as.character(n1)   #turn the names to characters 
@@ -97,7 +99,8 @@ The first step was to access the names of the measured variables
 
 Then the measurement data from both training and test cases was accessed and combined, utilizing the names of variables as column names.
 
-''' R-script
+'''
+
         #reading the list of train and test observations with the names of variables from above as column names
         obs.t1 <- read.table("*file location*", col.names = n2)
         obs.t2 <- read.table("*file location*", col.names = n2)
@@ -108,7 +111,8 @@ Then the measurement data from both training and test cases was accessed and com
 
 Then only those columns pertaining to mean scores and standard deviation were selected.
 
-'''R-script       
+'''
+       
         #subsetting variables regarding mean or std dev from all observations
         ss.var.n1 <- grep("[Mm][Ee][Aa][Nn]|[Ss][Tt][Dd]",n2)
         obs.t4 <- obs.t3[ss.var.n1]
@@ -116,7 +120,8 @@ Then only those columns pertaining to mean scores and standard deviation were se
 
 Then the data identifying the subject and the activity they performed either in training or test cases were accessed and combined, all of which was combined with the observation data to form the complete data set.
 
-'''R-script
+'''
+
         #reading the list of subject numbers from training and test data
         sub.t1 <-read.table("*file location*", col.names = 'subject')
         sub.t2 <-read.table("*file location*", col.names = 'subject')
@@ -137,7 +142,8 @@ Then the data identifying the subject and the activity they performed either in 
 
 Finally the activities were substituted from number indicators to descriptive text.  The resulting final data was output to the global environment.
 
-'''R-script
+'''
+
         #updating activity variables to text for all data
         col <- "activity"
         all.data[,col][all.data[,col] == 1] <- "walking"
@@ -154,7 +160,8 @@ Finally the activities were substituted from number indicators to descriptive te
 
 For the summary of data, a few additional steps were taken.  A loop was created to determine mean values of the measurements for each subject, further broken-down by the type of activity.  There were a total of 30 subjects and 6 activities.
 
-'''R-script
+'''
+
         #lists of subjects and activities
         sub.l1 <- c(1:30)
         act.l1 <- c(1:6)
@@ -182,8 +189,9 @@ For the summary of data, a few additional steps were taken.  A loop was created 
 
 The resulting output was then modified so the activities were substituted from number indicators to descriptive text, and the resulting final data was output to the global environment, in much the same manner as the larger dataset described above.
 
-'''R-script
-        #
+'''
+
+        #updating activity variables to text for all summary data
         col <- "activity"  **not actually repeated in code, just listed for reference**
         all.data2[,col][all.data2[,col] == 1] <- "walking"
         all.data2[,col][all.data2[,col] == 2] <- "walking upstairs"        
